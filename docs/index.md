@@ -6,6 +6,9 @@ hero:
   name: "Help documents"
   text: "帮助文档"
   tagline: My great project tagline
+  image:
+    src: /background.svg
+    alt: 背景图
   actions:
     - theme: brand
       text: Markdown Examples

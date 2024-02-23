@@ -60,11 +60,10 @@ function getList(params, path1, pathname) {
 
 export const set_sidebar = (pathname) => {
     // 获取pathname的路径
-    const dirPath = path.join(DIR_PATH, pathname);
+    const dirPath = path.join(DIR_PATH + "\\docs", pathname);
     // 读取pathname下的所有文件或者文件夹
     const files = fs.readdirSync(dirPath);
     // 过滤掉
     const items = intersections(files, WHITE_LIST);
-    // getList 函数后面会讲到
     return getList(items, dirPath, pathname);
 };
