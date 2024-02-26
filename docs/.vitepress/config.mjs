@@ -7,6 +7,10 @@ export default defineConfig({
   base: "/docs-demo",
   title: "帮助文档",
   description: "A VitePress Site",
+  lastUpdated: true, //显示文章最新更新时间
+  head: [
+      ['meta', {name: 'referrer', content: 'no-referrer'}]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outlineTitle: "本文导读",
@@ -14,7 +18,24 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' },
-      { text: '自动生成', link: '/platform/算力平台1' }
+      { text: '自动生成',
+        items: [
+          {text: 'test1',
+            items:[
+              {text:'text11',
+              items:[
+                {text:'text111', link: '/markdown-examples'}
+              ]},
+              {text:'text12', link: '/'}
+            ]
+          },
+          {text: 'test2',
+            items:[
+              {text:'text21', link: '/'},
+              {text:'text22', link: '/'}
+            ]},
+        ]
+      }
     ],
 
     sidebar: [
@@ -67,6 +88,7 @@ export default defineConfig({
         },
       },
     },
+
 
   }
 })
