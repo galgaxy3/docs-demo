@@ -1,6 +1,6 @@
 {
   "index_name": "docs-demo",
-  "start_urls":  "https://galgaxy3.github.io/docs-demo/",
+  "start_urls":  ["https://galgaxy3.github.io/docs-demo/"],
   "rateLimit": 8,
   "maxDepth": 10,
   "selectors": {
