@@ -76,51 +76,51 @@ export default defineConfig({
 
 
     // 设置搜索框的样式
-    // search: {
-    //   provider: "local",
-      // options: {
-      //   locales: {
-      //     zh: {
-      //       translations: {
-      //         button: {
-      //           buttonText: '搜索文档',
-      //           buttonAriaLabel: '搜索文档'
-      //         },
-      //         modal: {
-      //           noResultsText: '无法找到相关结果',
-      //           resetButtonTitle: '清除查询条件',
-      //           footer: {
-      //             selectText: '选择',
-      //             navigateText: '切换'
-      //           }
-      //         }
-      //       }
-      //     }
-      //   },
-      // },
-    // },
-
-
-  },
-  vite:{
-    plugins:[pagefindPlugin({
-      btnPlaceholder: '搜索',
-      placeholder: '搜索文档',
-      emptyText: '空空如也',
-      heading: '共: {{searchResult}} 条结果',
-      customSearchQuery(input){
-        // 将搜索的每个中文单字两侧加上空格
-        return input.replace(/[\u4e00-\u9fa5]/g, ' $& ')
-            .replace(/\s+/g,' ')
-            .trim();
+    search: {
+      provider: "local",
+      options: {
+        locales: {
+          zh: {
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索文档'
+              },
+              modal: {
+                noResultsText: '无法找到相关结果',
+                resetButtonTitle: '清除查询条件',
+                footer: {
+                  selectText: '选择',
+                  navigateText: '切换'
+                }
+              }
+            }
+          }
+        },
       },
-      excludeSelector:['img','a.header-anchor'],
-      forceLanguage:'zh-cn',
-      resultOptimization: false,
-      filter(searchItem, idx, originArray) {
-        console.log(searchItem);
-        return !searchItem.route.includes('404')
-      }
-    })],
+    },
+
+
   },
+  // vite:{
+  //   plugins:[pagefindPlugin({
+  //     btnPlaceholder: '搜索',
+  //     placeholder: '搜索文档',
+  //     emptyText: '空空如也',
+  //     heading: '共: {{searchResult}} 条结果',
+  //     customSearchQuery(input){
+  //       // 将搜索的每个中文单字两侧加上空格
+  //       return input.replace(/[\u4e00-\u9fa5]/g, ' $& ')
+  //           .replace(/\s+/g,' ')
+  //           .trim();
+  //     },
+  //     excludeSelector:['img','a.header-anchor'],
+  //     forceLanguage:'zh-cn',
+  //     resultOptimization: false,
+  //     filter(searchItem, idx, originArray) {
+  //       console.log(searchItem);
+  //       return !searchItem.route.includes('404')
+  //     }
+  //   })],
+  // },
 })
