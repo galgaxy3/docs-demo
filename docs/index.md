@@ -12,15 +12,15 @@ hero:
   actions:
     - theme: brand
       text: Markdown Examples
-      link: /markdown-examples
+      link: /platform/算力平台1.md
     - theme: alt
       text: API Examples
-      link: /api-examples
+      link: /platform/算力平台2.md
 
 features:
   - title: 算力平台
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    link: /markdown-examples
+    link: /platform/算力平台1.md
   - title: 并网计算应用开发
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: 轻应用开发

@@ -1,9 +1,16 @@
 import { defineConfig } from 'vitepress'
-// import {set_sidebar} from "./utils/auto-sidebar";
 import {set_sidebar} from "./utils/auto-sidebar.mjs"
+import { chineseSearchOptimize, pagefindPlugin } from 'vitepress-plugin-pagefind'
+// import { SearchPlugin } from "vitepress-plugin-search";
 
-// https://vitepress.dev/reference/site-config
+// const blogTheme = getThemeConfig({
+//   // 关闭主题内置
+//   search: false
+// })
+
 export default defineConfig({
+  search: false,
+  lang: 'zh-cn',
   base: "/docs-demo",
   title: "帮助文档",
   description: "A VitePress Site",
@@ -12,19 +19,18 @@ export default defineConfig({
       ['meta', {name: 'referrer', content: 'no-referrer'}]
   ],
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     outlineTitle: "本文导读",
-    outline: [2,6], //定义展示的标题级别
+    outline: [1,6], //定义展示的标题级别
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
+      { text: 'Examples', link: '/platform/算力平台1.md' },
       { text: '自动生成',
         items: [
           {text: 'test1',
             items:[
               {text:'text11',
               items:[
-                {text:'text111', link: '/markdown-examples'}
+                {text:'text111', link: '/platform/算力平台1.md'}
               ]},
               {text:'text12', link: '/'}
             ]
@@ -68,27 +74,53 @@ export default defineConfig({
       copyright: "Copyright@ 2024 Inspur",
     },
 
+
     // 设置搜索框的样式
-    search: {
-      provider: "local",
-      options: {
-        translations: {
-          button: {
-            buttonText: "搜索文档",
-            buttonAriaLabel: "搜索文档",
-          },
-          modal: {
-            noResultsText: "无法找到相关结果",
-            resetButtonTitle: "清除查询条件",
-            footer: {
-              selectText: "选择",
-              navigateText: "切换",
-            },
-          },
-        },
+    // search: {
+    //   provider: "local",
+      // options: {
+      //   locales: {
+      //     zh: {
+      //       translations: {
+      //         button: {
+      //           buttonText: '搜索文档',
+      //           buttonAriaLabel: '搜索文档'
+      //         },
+      //         modal: {
+      //           noResultsText: '无法找到相关结果',
+      //           resetButtonTitle: '清除查询条件',
+      //           footer: {
+      //             selectText: '选择',
+      //             navigateText: '切换'
+      //           }
+      //         }
+      //       }
+      //     }
+      //   },
+      // },
+    // },
+
+
+  },
+  vite:{
+    plugins:[pagefindPlugin({
+      btnPlaceholder: '搜索',
+      placeholder: '搜索文档',
+      emptyText: '空空如也',
+      heading: '共: {{searchResult}} 条结果',
+      customSearchQuery(input){
+        // 将搜索的每个中文单字两侧加上空格
+        return input.replace(/[\u4e00-\u9fa5]/g, ' $& ')
+            .replace(/\s+/g,' ')
+            .trim();
       },
-    },
-
-
-  }
+      excludeSelector:['img','a.header-anchor'],
+      forceLanguage:'zh-cn',
+      resultOptimization: false,
+      filter(searchItem, idx, originArray) {
+        console.log(searchItem);
+        return !searchItem.route.includes('404')
+      }
+    })],
+  },
 })
