@@ -10,7 +10,7 @@ import { chineseSearchOptimize, pagefindPlugin } from 'vitepress-plugin-pagefind
 
 export default defineConfig({
   search: false,
-  lang: 'zh-cn',
+  lang: "zh-CN",
   base: "/docs-demo",
   title: "帮助文档",
   description: "A VitePress Site",
@@ -102,9 +102,9 @@ export default defineConfig({
     search:{
       provider: 'algolia',
       options: {
-        appId: 'W1LKPF0Z03',
-        apiKey: 'fc0c70fd046196c714b49e7793b4b1df',
-        indexName: 'galgaxy3io',
+        appId: 'WSR1YMJZCS',
+        apiKey: 'f99424b3f822f6c6767254e63a95d6f7',
+        indexName: 'docs-demo',
         placeholder: '请输入关键词',
         buttonText: '搜索',
       }
@@ -116,6 +116,16 @@ export default defineConfig({
     //   placeholder: '请输入关键词',
     //   buttonText: '搜索',
     // }
+    // search:{
+    //   provider: 'algolia',
+    //   options: {
+    //     appId: 'W1LKPF0Z03',
+    //     apiKey: 'fc0c70fd046196c714b49e7793b4b1df',
+    //     indexName: 'galgaxy3io',
+    //     placeholder: '请输入关键词',
+    //     buttonText: '搜索',
+    //   }
+    // },
 
   },
   // vite:{
