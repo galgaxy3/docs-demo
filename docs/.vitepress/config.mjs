@@ -104,7 +104,7 @@ export default defineConfig({
       options: {
         appId: 'W1LKPF0Z03',
         apiKey: 'fc0c70fd046196c714b49e7793b4b1df',
-        indexName: 'docs-demo',
+        indexName: 'galgaxy3io',
         placeholder: '请输入关键词',
         buttonText: '搜索',
       }
