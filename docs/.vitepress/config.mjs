@@ -26,48 +26,51 @@ export default defineConfig({
     outline: [1,6], //定义展示的标题级别
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/platform/算力平台1.md' },
-      { text: '自动生成',
-        items: [
-          {text: 'test1',
-            items:[
-              {text:'text11',
-              items:[
-                {text:'text111', link: '/platform/算力平台1.md'}
-              ]},
-              {text:'text12', link: '/'}
-            ]
-          },
-          {text: 'test2',
-            items:[
-              {text:'text21', link: '/'},
-              {text:'text22', link: '/'}
-            ]},
-        ]
-      }
+      { text: '繁星智算', link: '/platform/算力平台1.md' },
+      { text: '并网计算业务', link: '/'},
+      { text: '开发者平台', link: '/'},
+      { text: '运营运维平台', link: '/'},
+      // { text: '自动生成',
+      //   items: [
+      //     {text: 'test1',
+      //       items:[
+      //         {text:'text11',
+      //         items:[
+      //           {text:'text111', link: '/platform/算力平台1.md'}
+      //         ]},
+      //         {text:'text12', link: '/'}
+      //       ]
+      //     },
+      //     {text: 'test2',
+      //       items:[
+      //         {text:'text21', link: '/'},
+      //         {text:'text22', link: '/'}
+      //       ]},
+      //   ]
+      // }
     ],
 
     sidebar: [
       {
-        text: '算力平台',
-        items: set_sidebar("/platform"),
+        text: '繁星智算',
+        collapsed: true,
+        items: set_sidebar("/繁星智算"),
       },
       {
-        text: '并网计算应用开发',
-        items: set_sidebar("/gridApplication"),
+        text: '开发者平台',
+        collapsed: true,
+        items: set_sidebar("/开发者平台"),
       },
       {
-        text: '轻应用开发',
-        items: set_sidebar("/lightApplication"),
+        text: '并网计算业务',
+        collapsed: true,
+        items: set_sidebar("/并网计算业务"),
       },
       {
-        text: '硬件开发',
-        items: set_sidebar("/hardwareDev"),
+        text: '运营运维平台',
+        collapsed: true,
+        items: set_sidebar("/运营运维平台"),
       },
-      {
-        text: '政策法律',
-        items: set_sidebar("/policy"),
-      }
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
@@ -112,12 +115,10 @@ export default defineConfig({
     //     buttonText: '搜索',
     //   }
     // },
-    "algolia":{
-      "appId": "WSR1YMJZCS",
-      "apiKey": "f99424b3f822f6c6767254e63a95d6f7",
-      "indexName": "docs-demo",
-      "placeholder": "请输入关键词",
-      "buttonText": "搜索",
+    algolia:{
+      appId: "WSR1YMJZCS",
+      apiKey: "f99424b3f822f6c6767254e63a95d6f7",
+      indexName: "docs-demo",
     }
     // search:{
     //   provider: 'algolia',

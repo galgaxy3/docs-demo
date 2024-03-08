@@ -20,7 +20,8 @@ const intersections = (arr1, arr2) =>
     Array.from(new Set(arr1.filter((item) => !new Set(arr2).has(item))));
 
 // 把方法导出直接使用
-function getList(params, path1, pathname) {
+function getList(params1, path1, pathname) {
+    const params = intersections(params1, WHITE_LIST);
     // 存放结果
     const res = [];
     // 开始遍历params
@@ -29,12 +30,16 @@ function getList(params, path1, pathname) {
         const dir = path.join(path1, params[file]);
         // 判断是否是文件夹
         const isDir = isDirectory(dir);
+        if (isDir == "assets"){
+            continue;
+        }
         if (isDir) {
             // 如果是文件夹,读取之后作为下一次递归参数
             const files = fs.readdirSync(dir);
             res.push({
                 text: params[file],
                 collapsible: true,
+                collapsed: true,
                 items: getList(files, dir, `${pathname}/${params[file]}`),
             });
         } else {
